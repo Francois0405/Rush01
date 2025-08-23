@@ -98,40 +98,52 @@ void	put_table(int matriz[4][4],int num_dim)
 	}
 }
 */
-int	main(void)
-{
-	char	*test = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
-	array_char_to_matriz_int(test, 4);
 
-	return (0);
+int	error_handler(char *arg1, int dim)
+{
+	int	error;
+	
+
+	if ()
 }
 
-/*
+void	putStr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+
+void	putError()
+{
+	char	n;
+
+	n = '\n';
+	write(1, "Error", 5);
+	write(1, &n, 1);
+}
+
 int	main(int argc, char **argv)
 {
 	int	arr[16];
 	int	i;
 	int	j;
 	int	error;
+	char	*test = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
 
+		
 	i = 0;
 	j = 0;
-	error = 0;
-	while (argv[i] != '\0' && !error)
-	{
-		if (!(argv[1][i] <= 52 && argv[1][i] >= 49))
-			error = 1;
-		else
-			i++;
-		if (argv[1][i])
-
-		else
-		i++;
-	}
-
+	array_char_to_matriz_int(argv[1], 4);
+	error = error_handler(arr, 4);
 	if (error)
 	{
-		ft_error();
+		putError();
 	}
 	return (0);
-}*/
+}
