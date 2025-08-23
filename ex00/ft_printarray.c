@@ -6,22 +6,26 @@
 /*   By: andrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 10:54:21 by andrgarc          #+#    #+#             */
-/*   Updated: 2025/08/23 11:09:21 by andrgarc         ###   ########.fr       */
+/*   Updated: 2025/08/23 11:28:18 by fliraud-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_printarray(int **a, int col, int row)
+void	ft_printarray(int a[2][2], int col, int row)
 {
 	int	i;
 	int	j;
+	char	c;
 
 	j = 0;
-	while (j < row){
+	while (j < row)
+	{
 		i = 0;
-		while (i < col){
-			write(1, &a[j][i], 1);
+		while (i < col)
+		{
+			c = a[j][i] + '0';
+			write(1, &c, 1);
 			write(1, " ", 1);
 			i++;
 		}
