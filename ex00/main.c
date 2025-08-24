@@ -142,14 +142,33 @@ void	put_table(int matriz[4][4],int num_dim)
 }
 */
 
-/*
+int	*strToArr(char *str)
+{
+	int	arr[16];
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (str[i] != '\0' && j < 16)
+	{
+		if (str[i] != ' ')
+		{
+			arr[j] = str[i] - '0';
+			j++;
+		}
+		i++;
+	}
+	return (arr);
+}
+
 int	error_handler(char *arg1, int dim)
 {
 	int	error;
 	
+	
 	return (0);
 }
-*/
 
 void	putStr(char *str)
 {
@@ -172,29 +191,30 @@ void	putError()
 	write(1, &n, 1);
 }
 
+/*
 int	main(void)
 {
-	//int	arr[16];
+	int	arr[16];
 	char	*test = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
 	array_char_to_matriz_int(test, 4);
-	//error = error_handler(arr, 4);
-	//if (error)
-	//{
-	//	putError();
-	//}
+	error = error_handler(arr, 4);
+	if (error)
+	{
+		putError();
+	}
 	return (0);
 }
+*/
 
-//int	main(int argc, char **argv)
-//{
-//	//int	arr[16];
-//	char	*test = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
-//      argc = 0;
-//	array_char_to_matriz_int(test, 4);
-//	//error = error_handler(arr, 4);
-//	//if (error)
-//	//{
-//	//	putError();
-//	//}
-//	return (0);
-//}
+int	main(int argc, char **argv)
+{
+	int	arr[16];
+
+	array_char_to_matriz_int(argv[1], 4);
+	error = error_handler(argv[1], 4);
+	if (error)
+	{
+		putError();
+	}
+	return (0);
+}
