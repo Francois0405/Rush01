@@ -45,9 +45,9 @@ int**   init_matriz(int col, int row, int init)
 	int     j;
 
 	i = 0;
-	j = 0;
 	while (i < row)
 	{
+		j = 0;
 		matriz[i] = (int *) malloc(col * sizeof(int));
 		while (j < col)
 		{
