@@ -54,6 +54,8 @@ int     error_handler(int *arr, int dim)
 	{
 		if (arr[i] + arr[i + 4] > 5)
 			error = 1;
+		if (arr[i] == arr[i + 4] && arr[i] != 2)
+			error = 1;
 		if (i == 3)
 			i += 5;
 		else
