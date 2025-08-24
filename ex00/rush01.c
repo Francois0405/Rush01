@@ -49,6 +49,16 @@ int     error_handler(int *arr, int dim)
 		}
 		i++;
 	}
+	i = 0;
+	while ((i < 12) && error == 0)
+	{
+		if (arr[i] + arr[i + 4] > 5)
+			error = 1;
+		if (i == 3)
+			i += 5;
+		else
+			i++;
+	}
         return (error);
 }
 
