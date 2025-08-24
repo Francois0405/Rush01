@@ -1,4 +1,5 @@
 /* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   rush.c                                             :+:      :+:    :+:   */
@@ -13,12 +14,18 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	free_matriz(int **matriz, int row)
+#define DIM 4
+
+/*
+* free_matriz
+* Free all memory spaces occupied by a matrix
+*/
+void	free_matriz(int matriz[4][4], int dim)
 {
-	int	i;
-	
+	int     i;
+
 	i = 0;
-	while (i < row)
+	while (i < dim)
 	{
 		free(matriz[i]);
 		i++;
@@ -26,15 +33,21 @@ void	free_matriz(int **matriz, int row)
 	free(matriz[i]);
 }
 
-int**	init_matriz(int col, int row, int init)
+/*
+* init_matriz
+* Inicialize the matrix to an Int value, reserves space in memory (malloc)
+*/
+
+int**   init_matriz(int col, int row, int init)
 {
-	int	**matriz = (int **) malloc(row * sizeof(int*));
-	int	i;
-	int	j;
+	int     **matriz = (int **) malloc(row * sizeof(int*));
+	int     i;
+	int     j;
 
 	i = 0;
 	j = 0;
-	while (i < row){
+	while (i < row)
+	{
 		matriz[i] = (int *) malloc(col * sizeof(int));
 		while (j < col)
 		{
@@ -43,7 +56,35 @@ int**	init_matriz(int col, int row, int init)
 		}
 		i++;
 	}
+      return (matriz);
 }
+
+void	ft_printarray(int a[2][2], int col, int row)
+{
+	int	i;
+	int	j;
+	char	c;
+
+	j = 0;
+	while (j < row)
+	{
+		i = 0;
+		while (i < col)
+		{
+			c = a[j][i] + '0';
+			write(1, &c, 1);
+			write(1, " ", 1);
+			i++;
+		}
+		write(1, "\n", 1);
+		j++;
+	}
+}
+
+/*
+* array_char_to_matriz_int
+* Skips the spaces of the a string and put the numbers in a new int array.
+*/
 
 void	array_char_to_matriz_int(char *array_char, int num_dim)
 {
@@ -59,13 +100,15 @@ void	array_char_to_matriz_int(char *array_char, int num_dim)
 	z = 0; //controla la cantidad de vectores
 	while (array_char[i] != '\0')
 	{
-		if (array_char[i] != ' ')
+		if (array_char[i] != ' ') // Skips the spaces
 		{
-			matriz[j][z] = array_char[i] - '0';
+			matriz[j][z] = array_char[i] - '0'; // char to int convertion
 			z++;
     			if (z >= num_dim)
-				j++;
-				z = 0;
+				{	
+					j++;
+					z = 0;
+				}
 		}
 		i++;
 	}
@@ -99,13 +142,14 @@ void	put_table(int matriz[4][4],int num_dim)
 }
 */
 
+/*
 int	error_handler(char *arg1, int dim)
 {
 	int	error;
 	
-
-	if ()
+	return (0);
 }
+*/
 
 void	putStr(char *str)
 {
@@ -128,22 +172,29 @@ void	putError()
 	write(1, &n, 1);
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int	arr[16];
-	int	i;
-	int	j;
-	int	error;
+	//int	arr[16];
 	char	*test = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
-
-		
-	i = 0;
-	j = 0;
-	array_char_to_matriz_int(argv[1], 4);
-	error = error_handler(arr, 4);
-	if (error)
-	{
-		putError();
-	}
+	array_char_to_matriz_int(test, 4);
+	//error = error_handler(arr, 4);
+	//if (error)
+	//{
+	//	putError();
+	//}
 	return (0);
 }
+
+//int	main(int argc, char **argv)
+//{
+//	//int	arr[16];
+//	char	*test = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
+//      argc = 0;
+//	array_char_to_matriz_int(test, 4);
+//	//error = error_handler(arr, 4);
+//	//if (error)
+//	//{
+//	//	putError();
+//	//}
+//	return (0);
+//}

@@ -13,6 +13,10 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+/*
+* free_matriz
+* Free all memory spaces occupied by a matrix
+*/
 void	free_matriz(int **matriz, int row)
 {
 	int     i;
@@ -25,6 +29,11 @@ void	free_matriz(int **matriz, int row)
 	}
 	free(matriz[i]);
 }
+
+/*
+* init_matriz
+* Inicialize the matrix to an Int value, reserves space in memory (malloc)
+*/
 
 int**   init_matriz(int col, int row, int init)
 {
